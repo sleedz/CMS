@@ -1,0 +1,40 @@
+input, select, textarea, file { border-radius: 4px; padding: 5px; border: 1px #836F07 solid; }
+.search { box-shadow: inset 0px 1px 3px #000, 0 1px 0 white; }
+
+.submit { 
+	font-size: 12px;
+    font-weight:bold;
+    padding: 7px 12px;
+    cursor:pointer; 
+    line-height:16px;
+    display:inline-block;
+    margin:10px 15px 30px 0px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;/*gecko - mozilla*/
+    -webkit-border-radius: 5px; /*new webkit - Chrome and Safari*/ 
+    box-shadow: #e3e3e3 0 1px 1px;  
+    -moz-box-shadow: 0px 1px 1px rgba(000,000,000,0.1), inset 0px 1px 1px rgba(255,255,255,0.7);/*gecko - mozilla*/
+    -webkit-box-shadow:  0px 1px 1px rgba(000,000,000,0.1), inset 0px 1px 1px rgba(255,255,255,0.7);/*new webkit - Chrome and Safari*/     
+    behavior:url(PIE.htc);        
+    text-shadow: 1px 1px 0px #000;
+    color: #FFF;
+    border: 1px solid #3d3d3d;
+	background: #3D2A03; /*fallback for non-CSS3 browsers*/
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#91611A) to(#634406)); /*old webkit*/
+    background: -webkit-linear-gradient(#91611A, #634406); /*new webkit*/
+    background: -moz-linear-gradient(#91611A, #634406); /*gecko*/
+    background: -ms-linear-gradient(#91611A, #634406); /*IE10*/
+    background: -o-linear-gradient(#91611A, #634406); /*opera 11.10+*/
+    background: linear-gradient(#91611A, #634406); /*future CSS3 browsers*/
+    -pie-background: linear-gradient(#91611A, #634406); /*PIE*/
+}
+.submit:hover { 
+	background: #634406; /*fallback for non-CSS3 browsers*/
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#634406) to(#91611A)); /*old webkit*/
+    background: -webkit-linear-gradient(#634406, #91611A); /*new webkit*/
+    background: -moz-linear-gradient(#634406, #91611A); /*gecko*/
+    background: -ms-linear-gradient(#634406, #91611A); /*IE10*/
+    background: -o-linear-gradient(#634406, #91611A); /*opera 11.10+*/
+    background: linear-gradient(#634406, #91611A); /*future CSS3 browsers*/
+    -pie-background: linear-gradient(#634406, #91611A); /*PIE*/
+}
