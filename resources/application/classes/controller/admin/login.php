@@ -47,7 +47,9 @@ class Controller_Admin_Login extends Controller_Admin
 			$get = $_GET;
 			$get = arr::map('trim', $get);
 
-			$key = ORM::factory('user_key', array('hash' => arr::get($get, 'key')));
+			$key = ORM::factory('user_key');
+			$key->where('hash', '=', arr::get($get, 'key'));
+			$key->find();
 			if($key->loaded())
 			{
 				if($key->user->change_password())

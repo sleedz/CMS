@@ -37,3 +37,13 @@
 --
 #0 [internal function]: Kohana_Core::shutdown_handler()
 #1 {main}
+2012-10-23 00:50:50 --- ERROR: ErrorException [ 4 ]: syntax error, unexpected T_VARIABLE ~ APPPATH/classes/model/user/key.php [ 17 ]
+2012-10-23 00:50:50 --- STRACE: ErrorException [ 4 ]: syntax error, unexpected T_VARIABLE ~ APPPATH/classes/model/user/key.php [ 17 ]
+--
+#0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main}
+2012-10-23 00:50:58 --- ERROR: ErrorException [ 4 ]: syntax error, unexpected T_VARIABLE ~ APPPATH/classes/model/user/key.php [ 17 ]
+2012-10-23 00:50:58 --- STRACE: ErrorException [ 4 ]: syntax error, unexpected T_VARIABLE ~ APPPATH/classes/model/user/key.php [ 17 ]
+--
+#0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main}
