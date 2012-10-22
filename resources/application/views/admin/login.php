@@ -6,11 +6,17 @@
 <link rel="stylesheet" href="<? url::base() ?>/styles/admin/login.css" type="text/css" media="all" />
 </head>
 <body>
-	
 	<div class="countainer">
 	<div id="shine"></div>
 		<h1>Admin Panel</h1>
-		<?= $content ?>
+		<div id="login-form">
+			<div id="message" class="<?= message::class_name() ?>" style="<?= message::get() ? 'display: block;' : 'display: none;' ?>" >
+				<ul>
+					<?= message::get() ?>
+				</ul>
+			</div>
+			<?= $content ?>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 body { background: url('../../images/admin/bg.png'); font-family: 'Helvetica'; }
+pre.xdebug-var-dump { background: #fff; }
 
 #shine { width: 1px; height: 1px; box-shadow: 0 0 300px 120px white; position: absolute; margin: 150px 250px; z-index: -1; }
 .countainer { width: 500px; padding: 145px 0 30px; 0; margin: 0 auto; }
 h1 { color: #FFF; font-size: 24px; text-shadow: #000 0 2px 15px; }
 
-div#login-form { width: 500px; height: 200px; border-radius: 30px; box-shadow: 0 0 15px 3px #2E2E2E, inset 0 -1px 5px 1px #7A7A7A; padding: 60px 0 0 0;
+div#login-form { width: 500px; /*height: 200px;*/ border-radius: 30px; box-shadow: 0 0 15px 3px #2E2E2E, inset 0 -1px 5px 1px #7A7A7A; /*padding: 60px 0 0 0*/ padding: 0 0 30px 0;
 	background: #d3d3d3; /* Old browsers */
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QzZDNkMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YzRjNGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -17,7 +18,7 @@ background: linear-gradient(to bottom,  #d3d3d3 0%,#4c4c4c 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#4c4c4c',GradientType=0 ); /* IE6-8 */
 
 }
-div#login-form p { padding: 0 20px; font-size: 14px; }
+div#login-form p { padding: 30px 20px 0 20px; font-size: 14px; }
 
 #login-table { font-weight: bold; font-size: 14px; margin: 0 auto; }
 #login-table tr td { padding: 0 0 0 20px; }
@@ -68,3 +69,9 @@ input[type=text], input[type=password] { border: 1px #9f9f9f solid; border-radiu
  #pass-forget { float: right; padding: 0 20px 0 0; }
  a { text-decoration: none; color: #000; font-weight: bold; font-size: 12px;}
  a:hover { color: #FFF; }
+
+ #message { padding: 10px 0; width: 496px; margin: 0 0 -30px 0; border-radius: 30px 30px 0 0; text-align: center; }
+ #message ul { margin: 0; padding: 0;  }
+ #message ul li{ list-style-type: none; }
+ #message.error { background: #E97777; border: 2px #9C4949 solid; color: #681C1C; }
+ #message.success { background: #97C588; border: 2px #428814 solid; color: #006117; }

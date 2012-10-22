@@ -7,4 +7,7 @@ class Model_User_Key extends ORM
 	
 	public $errors = array();
 
+	protected $_belongs_to = array(
+		'user' => array('model' => 'user', 'foreign_key' => 'user_id'),
+	);
 }

@@ -14,8 +14,13 @@ class Controller_Admin_Login extends Controller_Admin
 			
 			if($_POST)
 			{
-				$user->login();
-				Request::$initial->redirect(url::site(arr::get($_GET, 'redirect')));
+				if($user->login())
+				{
+					if(arr::get($_GET, 'redirect'))
+						Request::$initial->redirect(url::site(arr::get($_GET, 'redirect')));
+					else
+						Request::$initial->redirect(url::site('admin'));
+				}
 			}
 		}
 		else
@@ -39,13 +44,51 @@ class Controller_Admin_Login extends Controller_Admin
 
 		if(arr::get($_GET, 'key'))
 		{
+			$get = $_GET;
+			$get = arr::map('trim', $get);
+
+			$key = ORM::factory('user_key', array('hash' => arr::get($get, 'key')));
+			if($key->loaded())
+			{
+				if($key->user->change_password())
+				{
+					Flash::set(__('Hasło zostało zmienione'));
+					Request::$initial->redirect(url::site('admin/login'));
+				}
+				else
+				{
+					message::error($key->user->errors);
+				}
+			}
+			else
+			{
+				// var_dump($key->errors);
+				message::error(__('Niestety klucz jest nie poprawny'));
+			}
+
 			$this->template->content = View::factory('admin/login/change_password');
+			
+
+			if($_POST)
+			{
+				$post = $_POST;
+				$post = arr::map('trim', $post);
+
+				$user = ORM::factory('user');
+			}
+			
+
 		}
 		else 
 		{
 			$user = ORM::factory('user');
-			$user->add_key();
-			Request::$initial->redirect(url::site('admin/login'));
+			if($key = $user->add_key())
+			{
+				Flash::set(__('Na podany adres wysłano maila z linkiem do zmiany hasła'));
+				Request::$initial->redirect(url::site('admin/login'));
+			}
+			else
+				message::error($user->errors);
 		}
 	}
 }

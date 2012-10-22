@@ -54,6 +54,9 @@ class Controller_Admin extends Controller_Template
 		$this->template->title = (! empty($this->template->title)) ? implode(' - ', $this->template->title) : NULL;
 		$this->template->navigation = (! empty($navigation)) ? implode('<li>&rarr;</li>', $navigation) : NULL;
 		
+		$message = info::message();
+		message::success($message);
+		
 		parent::after();
 	}
 	
