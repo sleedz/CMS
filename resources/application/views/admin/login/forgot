@@ -1,0 +1,15 @@
+<div id="login-form">
+	<form action="" method="POST">
+		<table id="login-table">
+			<tr>
+				<td><?= __('E-mail') ?></td>
+				<td><input type="text" name="email" value="<?= form::value('email') ?>" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="<?= __('Send') ?>" class="button" /></td>
+			</tr>
+		</table>
+	</form>
+	<span id="pass-forget"><a href="#"><?= __('Forgot your password?') ?></a></span>
+</div>

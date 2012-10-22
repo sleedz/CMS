@@ -18,13 +18,15 @@ class Mail
 			$reply_to = array($user->email => $user->name());	
 		}
 		
-		
-		$transport = Swift_MailTransport::newInstance();	
+		$mailer = Kohana::$config->load('mailer');
+		$transport = Swift_SmtpTransport::newInstance($mailer['smtp']['host'], $mailer['smtp']['port'], $mailer['smtp']['security'])
+			->setUsername($mailer['username'])
+			->setPassword($mailer['password']);	
 		$mailer = Swift_Mailer::newInstance($transport);	
 		
 		$message = Swift_Message::newInstance()
 			->setSubject($subject)
-			->setFrom(array('info@minicrm.pl' => 'MiniCRM.pl'))
+			->setFrom(array('restauracja@kuchniaiwino.com.pl' => 'Kuchnia i Wino'))
 			->setReplyTo($reply_to)
 			->setTo(array($to))
 			->setBody($content, $content_type, 'utf-8');

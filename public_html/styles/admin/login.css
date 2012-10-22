@@ -17,6 +17,7 @@ background: linear-gradient(to bottom,  #d3d3d3 0%,#4c4c4c 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#4c4c4c',GradientType=0 ); /* IE6-8 */
 
 }
+div#login-form p { padding: 0 20px; font-size: 14px; }
 
 #login-table { font-weight: bold; font-size: 14px; margin: 0 auto; }
 #login-table tr td { padding: 0 0 0 20px; }

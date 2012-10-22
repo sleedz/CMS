@@ -7,6 +7,7 @@ return array(
 	'Forgot your password?' => 'Zapomniałeś hasła?',
 	'Email' => 'Email',
 	'Save' => 'Zapisz',
+	'Send' => 'Wyślij',
 	
 	'Search' => 'Szukaj',
 	
@@ -14,5 +15,6 @@ return array(
 	'Username is already taken' => 'Login jest już zajęty',
 	
 	'Please enter email address' => 'Podaj adres email',
-	'Please enter a valid email' => 'Podaj poprawny adres email'
+	'Please enter a valid email' => 'Podaj poprawny adres email',
+	'There is no such account' => 'Nie ma takiego konta'
 );

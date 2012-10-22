@@ -6,6 +6,7 @@ class Controller_Admin_Login extends Controller_Admin
 		
 	public function action_login()
 	{
+		$this->template->content = View::factory('admin/login/form');
 		if(!Account::instance()->logged_in())
 		{
 			$this->add_title(__('Login'));
@@ -30,5 +31,21 @@ class Controller_Admin_Login extends Controller_Admin
 		Account::instance()->logout();
 		
 		Request::$initial->redirect(url::site('admin/login'));
+	}
+
+	public function action_forgot()
+	{
+		$this->template->content = View::factory('admin/login/forgot');
+
+		if(arr::get($_GET, 'key'))
+		{
+			$this->template->content = View::factory('admin/login/change_password');
+		}
+		else 
+		{
+			$user = ORM::factory('user');
+			$user->add_key();
+			Request::$initial->redirect(url::site('admin/login'));
+		}
 	}
 }

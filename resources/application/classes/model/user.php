@@ -62,4 +62,35 @@ class Model_User extends ORM
 			$valid->error('login', 'login_exists');
 		}
 	}
+
+	// Funkcja do odzyskiwania haseł
+	public function add_key()
+	{
+		if($_POST)
+		{
+			$post = $_POST;
+			$post = arr::map('trim', $post);
+			
+			$valid = Validation::factory($post);
+			$valid->rule('email', 'not_empty');
+			$valid->rule('email', 'email');
+			$valid->rule('email', 'validate::email_exists', array(':value'));
+
+			if($valid->check())
+			{
+				$user = ORM::factory('user', array('email' => $valid['email']));
+				if($user->loaded())
+				{
+					$key = ORM::factory('user_key');
+					$key->hash = sha1($user->email.time());
+					$key->user_id = $user->id;
+					$key->save();
+					$content = View::factory('mails/change_password')
+						->set('url', url::base_url().'/admin/login/forgot')
+						->set('key', $key);
+					$send = mail::send($valid['email'], 'Przypomnienie hasła do strony '.Kohana::$config->load('site.title'), $content);
+				}
+			}
+		}
+	}
 }

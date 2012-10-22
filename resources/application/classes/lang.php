@@ -1,38 +1,6 @@
 <?php
 class Lang
 {
-	public static function get()
-	{
-		$http_accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-		if(isset($http_accept) && strlen($http_accept) > 1)  
-		{
-			$languages = explode(",",$http_accept);
-			foreach ($languages as $language) 
-			{
-				if(preg_match("/(.*);q=([0-1]{0,1}\.\d{0,4})/i",$language,$matches))
-				{
-					$matches[1] = strtolower(str_replace(array(' ', '_'), '-', $matches[1]));
-					$lang[$matches[1]] = (float)$matches[2];
-				}
-				else
-				{
-					$language = strtolower(str_replace(array(' ', '_'), '-', $language));
-					$lang[$language] = 1.0;
-				}
-				
-				
-			}
-			
-			$qval = 0.0;
-			foreach ($lang as $key => $value) {
-				if ($value > $qval) {
-					$qval = (float)$value;
-					$deflang = $key;
-				}
-			}
-		}
-		return strtolower($deflang);
-	}
 	
 	public static function icons()
 	{

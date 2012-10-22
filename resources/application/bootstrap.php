@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 // -- Environment setup --------------------------------------------------------
-
+  
 // Load the core Kohana class
 require SYSPATH.'classes/kohana/core'.EXT;
 
@@ -15,7 +15,6 @@ else
 	// Load empty core extension
 	require SYSPATH.'classes/kohana'.EXT;
 }
-
 /**
  * Set the default time zone.
  *
@@ -55,6 +54,9 @@ if(!in_array($lang, Kohana::$config->load('lang.available'))) {
 	$lang = Kohana::$config->load('lang.default');
 }
 Cookie::set('lang', $lang);*/
+
+
+I18n::lang(I18n::$default);
 
 
 /**
@@ -102,14 +104,14 @@ Kohana::$log->attach(new Log_File(APPPATH.'logs'));
  */
 Kohana::$config->attach(new Config_File);
 
-$lang = Cookie::get('lang', Lang::get());
+$lang = Cookie::get('lang', I18n::browser());
 if(!in_array($lang, Kohana::$config->load('lang.available'))) 
 {
-	$lang = Kohana::$config->load('lang.default');
+	$lang = I18n::$default;
 }
 Cookie::set('lang', $lang);
 I18n::lang($lang);
-
+ 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
@@ -133,6 +135,13 @@ Route::set('login', 'admin/login')
 		'directory'		=> 'admin',
 		'controller'	=> 'login',
 		'action'		=> 'login',
+));
+
+Route::set('forgot', 'admin/login/forgot')
+->defaults(array(
+		'directory'		=> 'admin',
+		'controller'	=> 'login',
+		'action'		=> 'forgot',
 ));
 
 Route::set('logout', 'admin/logout')
