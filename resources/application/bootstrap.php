@@ -124,7 +124,9 @@ Kohana::modules(array(
 	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	 'I18n_plural'=> MODPATH.'I18n_plural',
 	));
+// var_dump(Kohana::modules());
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -158,6 +160,13 @@ Route::set('admin', 'admin')
 		'action'		=> 'index',
 ));
 
+Route::set('settings_index', 'admin/settings')
+	->defaults(array(
+		'directory' => 'admin',
+		'controller' => 'settings',
+		'action' => 'index'	
+));
+
 Route::set('settings', 'admin/settings(/<controller>(/<action>))')
 	->defaults(array(
 		'directory' => 'admin/settings',
@@ -170,6 +179,12 @@ Route::set('change_language', 'admin/language/<lang>', array('lang' => '[a-z_-]+
 		'controller' => 'admin',
 		'action' => 'change_language',
 		'lang' => null
+));
+
+Route::set('admin_actions', 'admin/<controller>(/<action>)')
+	->defaults(array(
+		'directory' => 'admin',
+		'action' => 'index'	
 ));
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')

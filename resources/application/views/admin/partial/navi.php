@@ -11,7 +11,7 @@
 			
 	<ul id="top-right-navi">
 		<li class="navi-divider"></li>
-		<li><a href="#" id="my-account"><?= __('Settings')?></a>
+		<li><a href="<?= url::site('admin/settings') ?>" id="my-account"><?= __('Settings')?></a>
 		<li class="navi-divider"></li>
 		<li><a href="#" id="my-account"><?= __('My account')?></a>
 		<li class="navi-divider"></li>

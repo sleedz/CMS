@@ -1,4 +1,5 @@
 input, select, textarea, file { border-radius: 4px; padding: 5px; border: 1px #836F07 solid; }
+select, option { background: #fff!important; }
 .search { box-shadow: inset 0px 1px 3px #000, 0 1px 0 white; }
 
 .submit { 
@@ -38,3 +39,17 @@ input, select, textarea, file { border-radius: 4px; padding: 5px; border: 1px #8
     background: linear-gradient(#634406, #91611A); /*future CSS3 browsers*/
     -pie-background: linear-gradient(#634406, #91611A); /*PIE*/
 }
+
+.button { padding: 3px 7px; margin: 4px 0; }
+.button:hover { background: #3D2A03; 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#C4954F) to(#7C6027)); 
+    background: -webkit-linear-gradient(#C4954F, #7C6027); 
+    background: -moz-linear-gradient(#C4954F, #7C6027); 
+    background: -ms-linear-gradient(#C4954F, #7C6027);
+    background: -o-linear-gradient(#C4954F, #7C6027); 
+    background: linear-gradient(#C4954F, #7C6027); 
+    -pie-background: linear-gradient(#C4954F, #7C6027);
+}
+
+.form-table tr td { padding: 0 15px 0 0; }
+.tree { margin: 0 0 0 10px; }

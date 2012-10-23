@@ -90,6 +90,7 @@ class Controller_Admin extends Controller_Template
 		Cookie::set('lang', $lang);
 		I18n::lang($lang);
 		Session::instance()->set('post_target', arr::get($_GET, 'redirect'));
-		Request::$initial->redirect(url::site(arr::get($_GET, 'redirect')));
+		$redirect = arr::get($_GET, 'redirect') ? arr::get($_GET, 'redirect') : 'admin';
+		Request::$initial->redirect(url::site($redirect));
 	}
 }

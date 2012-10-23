@@ -1,0 +1,1 @@
+<p>Tutaj będą jakieś ikonki albo lista ustawień</p>

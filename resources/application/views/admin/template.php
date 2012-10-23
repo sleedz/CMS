@@ -5,6 +5,8 @@
 <title><?= $title ?></title>
 <link rel="stylesheet" href="<?= url::base()?>styles/admin/base.css" type="text/css" media="all" />
 <script type="text/javascript" src="<?= url::base() ?>scripts/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="<?= url::base() ?>scripts/fancybox/source/jquery.fancybox.css?v=2.1.2" type="text/css" media="screen" />
+<script type="text/javascript" src="<?= url::base() ?>scripts/fancybox/source/jquery.fancybox.pack.js?v=2.1.2"></script>
 <script type="text/javascript" src="<?= url::base() ?>scripts/admin/scripts.js"></script>
 </head>
 <body>

@@ -3,12 +3,21 @@ class Controller_Admin_Login extends Controller_Admin
 {
 	public $template = 'admin/login';
 	public $auth = FALSE;
+
+	public function after()
+	{
+		if(Account::instance()->logged_in() AND $this->auth == FALSE)
+		{
+			Request::$initial->redirect(url::site('admin'));
+		}
+
+		parent::after();
+	}
 		
 	public function action_login()
 	{
 		$this->template->content = View::factory('admin/login/form');
-		if(!Account::instance()->logged_in())
-		{
+		
 			$this->add_title(__('Login'));
 			$user = ORM::factory('user');
 			
@@ -22,11 +31,7 @@ class Controller_Admin_Login extends Controller_Admin
 						Request::$initial->redirect(url::site('admin'));
 				}
 			}
-		}
-		else
-		{
-			Request::$initial->redirect(url::site('admin'));
-		}
+		
 	}
 	
 	public function action_logout()

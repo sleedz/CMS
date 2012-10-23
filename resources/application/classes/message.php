@@ -42,6 +42,7 @@ class Message
 		$info = "";
 		foreach(self::$messages as $message)
 		{
+			// var_dump($message);
 			$info .= "<li>{$message[0]}</li>\n";
 		}
 		
