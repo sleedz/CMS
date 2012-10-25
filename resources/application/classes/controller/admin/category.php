@@ -11,9 +11,13 @@ class Controller_Admin_Category extends Controller_Admin
 	public function action_index()
 	{
 		$this->template->content_title = __('Kategorie');
-		$this->template->content = View::factory('admin/category/table');;
-	
-		
+
+		$categories = ORM::factory('category')->filter()->find_all();
+
+		$this->template->content = View::factory('admin/category/table')
+			->set('categories', $categories);
+
+		View::factory()->set_global('filter', View::factory('admin/category/partial/filter'));
 	}
 
 	private function category_form($category, $edit = false)
@@ -30,7 +34,7 @@ class Controller_Admin_Category extends Controller_Admin
 			if($category->save_category($edit))
 			{
 				Flash::set(__('Dodałeś kategorię :title', array(':title' => $category->title)));
-				Request::$initial->redirect(url::site('admin/categoriy'));	
+				Request::$initial->redirect(url::site('admin/category'));	
 			}
 			else
 				message::error($category->errors, 'error');
@@ -76,6 +80,7 @@ class Controller_Admin_Category extends Controller_Admin
 
 	    $open = array();
 	    $return = NULL;
+	    $level = 0;
 
 	    foreach($categories as $category)
 	    {
@@ -87,9 +92,10 @@ class Controller_Admin_Category extends Controller_Admin
 	            }
 
 	            $return .= '<li class="tree"><a href="'.$category['id'].'" class="category-parent-select">'.$category['title'].'</a>';
-
+	            $level++;
 	            $return .= $this->menu_sort($categories, $category['id']);
 	            $return .= '</li>';
+	            $level--;
 
 	        }
 	    }

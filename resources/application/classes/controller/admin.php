@@ -39,8 +39,11 @@ class Controller_Admin extends Controller_Template
 			->set('languages', lang::icons());
 		$this->template->settings_navi = View::factory('admin/partial/settings_navi')
 			->set('navi', $settings_navi);
+
+		View::factory()->set_global('filter', null);
 		
 		View::factory()->set_global('tab');
+		// var_dump(Session::instance()->get('filters', null));
 	}
 	
 	public function after()
@@ -92,5 +95,13 @@ class Controller_Admin extends Controller_Template
 		Session::instance()->set('post_target', arr::get($_GET, 'redirect'));
 		$redirect = arr::get($_GET, 'redirect') ? arr::get($_GET, 'redirect') : 'admin';
 		Request::$initial->redirect(url::site($redirect));
+	}
+
+	public function action_ckfinder()
+	{
+		$this->auto_render = false;
+		echo View::factory('admin/ckfinder');
+	
+		
 	}
 }

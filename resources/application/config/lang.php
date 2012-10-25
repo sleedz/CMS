@@ -14,5 +14,10 @@ return array(
 				'pl' => 'pl.png',
 				'en' => 'en_gb.png',
 				'de' => 'de.png'
-		)
+		),
+		'languages' => array(
+			'pl' => __('Polski'),
+			'en' => __('Angielski'),
+			'de' => __('Niemiecki'),
+		),
 );

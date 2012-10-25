@@ -59,4 +59,41 @@ $(document).ready(function(){
 		$('#category-url').val($(this).val().escapeDiacritics());
 	});
 
+	// Trzeba będzie zmienić żeby było uniwersalne
+	$('#content-language').change(function() { 
+		var selected = $(this).find(':selected');
+		var name = $(this).attr('name');
+		// console.log(select.attr('name'));
+		$.ajax({
+			url: '/admin/ajax/set_filter',
+			type: 'POST',
+			dataType: 'json',
+			data: { "filter" : [name, selected.val()] },
+			success: function(data)
+			{
+				// $('body').prepend(data);
+				location.reload();
+			},
+			error: function(e)
+			{
+				// $(e).prependTo('body');
+				$('body').prepend(e.responseText);
+				console.log(e);
+			}
+
+		});
+	});
+
+	$('#cat-id-open').fancybox({
+		content: $('#category-box')
+	});
+
+	$('.category-select').click(function() { 
+		$('#cat-id-holder').val($(this).attr('href'));
+		$('#cat-id-open').val($(this).text());
+		$.fancybox.close();
+
+		return false;
+	});
+
 });

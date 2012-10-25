@@ -60,7 +60,8 @@ body { background: #ffffff; font-family: 'Helvetica'; font-size: 13px; }
 
 #content { border: 1px #d7d7d7 solid; margin: 15px 0 0 0; padding: 20px; }
 a { text-decoration: none; font-weight: normal; color: #000; }
-a:hover { text-decoration: underline; }
+/*a:hover { text-decoration: underline; }*/
+a:hover.button { text-decoration: none!important; }
 
 #site-footer { border-top: 1px #d7d7d7 solid; border-bottom: 1px #d7d7d7 solid; padding: 10px 0; margin-top: 20px; margin-bottom: 5px; color: #d7d7d7 }
 #site-footer span { padding: 0 5px; }
@@ -72,3 +73,15 @@ a:hover { text-decoration: underline; }
 #message.error { border: 1px #AA1E1E solid; background: #FFEAEA; color: #AA1E1E; }
 #message.success { border: 1px #2E4E18 solid; background: #B1E9B1; color: #2E4E18; }
 
+.admin-table { width: 100%; }
+.admin-table td { width: auto; }
+.admin-table thead tr { background: #5E5E5E; /*border: 1px #000 solid; border-radius: 5px 5px 0 0;*/ }
+.admin-table thead td { padding: 5px 0 5px 10px; box-shadow: 0 10px 15px -7px #fff inset; color: #F1F1F1; font-weight: bold; }
+.admin-table thead tr:first-child td:first-child { border-radius: 5px 0 0 0;  }
+.admin-table thead tr:first-child td:last-child { border-radius: 0 5px 0 0; }
+.admin-table tbody td:first-child { border-left: 1px #000 solid; }
+.admin-table tbody td:last-child { border-right: 1px #000 solid; }
+.admin-table tbody tr:last-child td { border-bottom: 1px #000 solid; }
+.admin-table tbody tr { border-left: 1px #ff0000 solid; }
+.admin-table tbody td { padding: 10px 0 10px 10px; }
+.admin-table tbody tr:hover td { background: #E1EAF5; }

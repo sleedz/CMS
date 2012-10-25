@@ -181,10 +181,16 @@ Route::set('change_language', 'admin/language/<lang>', array('lang' => '[a-z_-]+
 		'lang' => null
 ));
 
-Route::set('admin_actions', 'admin/<controller>(/<action>)')
+Route::set('admin_actions', 'admin/<controller>(/<action>(/<type>-<id>))', array('id' => '[0-9]+', 'type' => '(cat|art|gal|news)'))
 	->defaults(array(
 		'directory' => 'admin',
 		'action' => 'index'	
+));
+
+Route::set('ckfinder', 'ckfinder(/<string>)', array('string' => '(.*)'))
+	->defaults(array(
+		'controller' => 'admin',
+		'action' => 'ckfinder'	
 ));
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')

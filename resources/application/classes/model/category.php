@@ -10,6 +10,10 @@ class Model_category extends ORM
 		'content' => array('model' => 'category_content', 'foreign_key' => 'category_id'),
 	);
 
+	protected $_belongs_to = array(
+		'author' => array('model' => 'user', 'foreign_key' => 'author_id'),
+	);
+
 	public $errors = array();
 
 	public function save_category($edit = true)
@@ -45,4 +49,38 @@ class Model_category extends ORM
 		}
 	}
 
+	public function filter()
+	{
+		$filter = array(
+			'language' => Kohana::$config->load('lang.available')
+		);
+		$filters = Session::instance()->get('filters', array());
+		foreach($filters as $key=>$val)
+		{
+			if(isset($filter[$key]))
+				if(in_array($val, $filter[$key]))
+					$this->where($key, '=', $val);
+		}
+		return $this;
+	}
+
+	public function language()
+	{
+		return Kohana::$config->load('lang.languages.'.$this->language);
+	}
+
+	public function can_add_article()
+	{
+		// if($this->)
+	}
+
+	public function content_type()
+	{
+		return $this->content->find();
+	}
+
+	public function edit_art_url()
+	{
+		return url::site('admin/article/edit/cat-'.$this->id);
+	}
 }

@@ -50,6 +50,23 @@ select, option { background: #fff!important; }
     background: linear-gradient(#C4954F, #7C6027); 
     -pie-background: linear-gradient(#C4954F, #7C6027);
 }
+.button[disabled=disabled] {
+    background: #A5A5A5; /*fallback for non-CSS3 browsers*/
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#A5A5A5) to(#727272)); /*old webkit*/
+    background: -webkit-linear-gradient(#A5A5A5, #727272); /*new webkit*/
+    background: -moz-linear-gradient(#A5A5A5, #727272); /*gecko*/
+    background: -ms-linear-gradient(#A5A5A5, #727272); /*IE10*/
+    background: -o-linear-gradient(#A5A5A5, #727272); /*opera 11.10+*/
+    background: linear-gradient(#A5A5A5, #727272); /*future CSS3 browsers*/
+    -pie-background: linear-gradient(#A5A5A5, #727272); /*PIE*/
+    cursor: default;
+}
+
 
 .form-table tr td { padding: 0 15px 0 0; }
 .tree { margin: 0 0 0 10px; }
+
+.filter { width: 100%; float: left; background: #CCE1F8; margin: -20px -20px 10px -20px; padding: 4px 20px; border-radius: 5px 5px 0 0; border-bottom: 1px #909CBB solid; }
+.filter ul { }
+.filter ul li { float: left; }
+.filter ul li select { border-radius: 0px; padding: 0; }

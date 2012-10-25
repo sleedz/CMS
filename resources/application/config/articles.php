@@ -19,6 +19,11 @@ return array
 				'model' => 'gallery',
 				'method' => 'find_all'
 			),
+			'news' => array(
+				'name' => __('Aktualności'),
+				'model' => __('news'),
+				'method' => __('find_all')
+			),
 		),
 		'sections' => array(
 			'top_navi' => array(

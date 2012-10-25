@@ -37,14 +37,19 @@
 		<div id="main" class="site">
 			<h1><?= $content_title ?></h1>
 			
+			
 			<div id="content" class="radius">
+				<?= View::factory('admin/partial/filter') ?>
+				<div class="wrap" style="float: left">
 				<div id="message" class="<?= message::class_name() ?>" style="<?= message::get() ? 'display: block;' : 'display: none;' ?>" >
 					<ul>
 						<?= message::get() ?>
 					</ul>
 				</div>
+				</div>
 				<?= $content ?>
 			</div>
+		
 		</div>
 	</div>
 	

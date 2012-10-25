@@ -5,19 +5,67 @@ class Form
   public static $object = NULL;
   public static $errors = array();
   
-  public static function value($field, $default = NULL)
+  public static function value($field, $default = NULL, $html = true)
   {
-    
     
     if(arr::path($_POST, $field) !== NULL)
     {
       $value = arr::path($_POST, $field);
           
       if(is_array($value)) {
-      	return $value;
+        return $value;
       }
-     	else
-			return html::chars(trim($value));
+      else
+        return $html ? html::chars(trim($value)) : trim($value);
+      
+    }
+    else
+    {
+
+      $fields = explode('.', $field);
+      
+      if(isset($fields[1]) AND isset($fields[2]))
+      {
+          if($fields[2] != 0)
+      {
+          $obj = self::$object->{$fields[0]}->offset($fields[2]-1)->find();
+        //echo $obj->name;  
+          $value = $obj->{$fields[1]}; //(isset($obj->{$fields[1]})) ? $obj->{$fields[1]} : NULL;
+        
+        //debug::dump($obj);
+      } 
+      else
+        $value = $default;
+      }
+      else      
+      {
+        //echo $value = self::$object->{$fields[0]};
+        //$value = self::$object->{$fields[0]}
+      $value = (isset(self::$object->{$fields[0]})) ? self::$object->{$fields[0]} : $default;
+      }
+        
+      //$field = $field.'.'.$key.'.'.$number;
+      
+          
+      return $value;
+    }
+    
+
+  }
+
+  public static function filter($field, $default = NULL)
+  {
+    
+    
+    if(arr::path(Session::instance()->get('filters'), $field) !== NULL)
+    {
+      $value = arr::path(Session::instance()->get('filters'), $field);
+          
+      if(is_array($value)) {
+        return $value;
+      }
+      else
+      return html::chars(trim($value));
     }
     else
     {
@@ -25,22 +73,22 @@ class Form
       
       if(isset($fields[1]) AND isset($fields[2]))
       {
-        	if($fields[2] != 0)
-			{
-		  		$obj = self::$object->{$fields[0]}->offset($fields[2]-1)->find();
-				//echo $obj->name;	
-		  		$value = $obj->{$fields[1]}; //(isset($obj->{$fields[1]})) ? $obj->{$fields[1]} : NULL;
-				
-				//debug::dump($obj);
-			} 
-			else
-				$value = $default;
+          if($fields[2] != 0)
+      {
+          $obj = self::$object->{$fields[0]}->offset($fields[2]-1)->find();
+        //echo $obj->name;  
+          $value = $obj->{$fields[1]}; //(isset($obj->{$fields[1]})) ? $obj->{$fields[1]} : NULL;
+        
+        //debug::dump($obj);
+      } 
+      else
+        $value = $default;
       }
       else      
       {
         //echo $value = self::$object->{$fields[0]};
         //$value = self::$object->{$fields[0]}
-		  $value = (isset(self::$object->{$fields[0]})) ? self::$object->{$fields[0]} : $default;
+      $value = (isset(self::$object->{$fields[0]})) ? self::$object->{$fields[0]} : $default;
       }
         
       //$field = $field.'.'.$key.'.'.$number;

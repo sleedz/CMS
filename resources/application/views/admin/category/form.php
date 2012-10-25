@@ -9,6 +9,17 @@
 			<td><input type="text" name="url" id="category-url" value="<?= form::value('url') ?>"></td>
 		</tr>
 		<tr>
+			<td>Język</td>
+			<td>
+				<select name="language">
+					<!-- <option value="all" <?= form::filter('language') == 'all' ? 'selected="selected"' : ''; ?>>Wszystkie</option> -->
+					<option value="pl" <?= form::filter('language') == 'pl' ? 'selected="selected"' : ''; ?>>Polski</option>
+					<option value="en" <?= form::filter('language') == 'en' ? 'selected="selected"' : ''; ?>>Angielski</option>
+					<!-- <option value="de" <?= form::filter('language') == 'de' ? 'selected="selected"' : ''; ?>>Niemiecki</option> -->
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td>Sekcja</td>
 			<td>
 				<input type="button" value="<?=__('Wybierz')?>" class="submit button" id="section-box-open">
